@@ -1,5 +1,6 @@
 variable "compute_name" {
     description = "compute instance name"
+    default = null
 }
 
 variable "storage_host" {

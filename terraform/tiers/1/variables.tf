@@ -33,27 +33,27 @@ variable "is_create_compute" {
   default     = true
 }
 
-variable "existing_host" {
+variable "storage_host" {
   description = "existing storage host"
   default     = null
 }
 
-variable "existing_port" {
+variable "storage_port" {
   description = "existing storage port"
   default     = null
 }
 
-variable "existing_name" {
+variable "storage_name" {
   description = "existing storage name"
   default     = null
 }
 
-variable "existing_user" {
+variable "storage_user" {
   description = "existing storage user"
   default     = null
 }
 
-variable "existing_password" {
+variable "storage_password" {
   description = "existing storage password"
   default     = null
 }

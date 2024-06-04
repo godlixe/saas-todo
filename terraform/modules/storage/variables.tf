@@ -13,23 +13,23 @@ variable "is_create_storage" {
   default = true
 }
 
-variable "existing_host" {
+variable "storage_host" {
   description = "existing storage host"
 }
 
-variable "existing_port" {
+variable "storage_port" {
   description = "existing storage port"
 }
 
-variable "existing_name" {
+variable "storage_name" {
   description = "existing storage name"
 }
 
-variable "existing_user" {
+variable "storage_user" {
   description = "existing storage user"
 }
 
-variable "existing_password" {
+variable "storage_password" {
   description = "existing storage password"
   default = "123root987"
 }

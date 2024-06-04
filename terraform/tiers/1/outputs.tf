@@ -1,5 +1,5 @@
-output "compute_service_url" {
-  value = module.compute.service_url
+output "compute_url" {
+  value = module.compute.compute_url
 }
 
 output "storage_host" {
