@@ -15,11 +15,11 @@ module "storage" {
 
   # Pool configuration
   is_create_storage = var.is_create_storage
-  existing_host     = var.storage_host
-  existing_port     = var.storage_port
-  existing_name     = var.storage_name
-  existing_user     = var.storage_user
-  existing_password = var.storage_password
+  storage_host     = var.storage_host
+  storage_port     = var.storage_port
+  storage_name     = var.storage_name
+  storage_user     = var.storage_user
+  storage_password = var.storage_password
 }
 
 module "compute" {
