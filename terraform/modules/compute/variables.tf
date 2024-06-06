@@ -28,3 +28,8 @@ variable "is_create_compute" {
     type = bool
     default = true
 }
+
+variable "compute_url" {
+    description = "compute instance url"
+    default = null
+}

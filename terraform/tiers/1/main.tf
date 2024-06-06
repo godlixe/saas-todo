@@ -27,6 +27,7 @@ module "compute" {
 
   # Pool configuration
   is_create_compute = var.is_create_compute
+  compute_url       = var.compute_url
   compute_name      = var.tenant_name
   storage_host      = module.storage.storage_host
   storage_port      = module.storage.storage_port

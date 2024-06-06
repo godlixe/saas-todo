@@ -57,3 +57,8 @@ variable "storage_password" {
   description = "existing storage password"
   default     = null
 }
+
+variable "compute_url" {
+  description = "existing compute url"
+  default     = null
+}
