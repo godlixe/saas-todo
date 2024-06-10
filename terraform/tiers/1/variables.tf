@@ -13,10 +13,6 @@ variable "infrastructure_id" {
   description = "infrastructure id"
 }
 
-variable "tenant_password" {
-  description = "tenant password"
-}
-
 variable "is_create_storage" {
   type        = bool
   description = "create a new storage instance"

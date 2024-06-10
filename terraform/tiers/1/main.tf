@@ -18,7 +18,7 @@ module "storage" {
   storage_port      = var.storage_port
   storage_name      = var.storage_name
   storage_user      = var.storage_user
-  storage_password  = var.storage_password
+  storage_password  = var.infrastructure_id
 }
 
 module "compute" {
