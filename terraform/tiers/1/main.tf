@@ -10,8 +10,7 @@ terraform {
 module "storage" {
   source = "../../modules/storage"
 
-  storage_instance_name = var.tenant_name
-  storage_user_password = var.tenant_password
+  storage_instance_name = var.infrastructure_id
 
   # Pool configuration
   is_create_storage = var.is_create_storage
@@ -28,7 +27,7 @@ module "compute" {
   # Pool configuration
   is_create_compute = var.is_create_compute
   compute_url       = var.compute_url
-  compute_name      = var.tenant_name
+  compute_name      = var.infrastructure_id
   storage_host      = module.storage.storage_host
   storage_port      = module.storage.storage_port
   storage_name      = module.storage.storage_name

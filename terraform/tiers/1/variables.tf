@@ -9,12 +9,8 @@ variable "project_id" {
 variable "region" {
   description = "provider region"
 }
-variable "tenant_name" {
-  description = "tenant name"
-}
-
-variable "tenant_subdomain" {
-  description = "tenant subdomain"
+variable "infrastructure_id" {
+  description = "infrastructure id"
 }
 
 variable "tenant_password" {
