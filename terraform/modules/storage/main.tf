@@ -53,5 +53,5 @@ resource "google_sql_user" "new-user" {
 
   name     = "default-${var.storage_instance_name}"
   instance = google_sql_database_instance.storage[0].name
-  password = var.storage_user_password
+  password = var.storage_password
 }

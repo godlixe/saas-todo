@@ -3,11 +3,6 @@ variable "storage_instance_name" {
   default = "tenant"
 }
 
-variable "storage_user_password" {
-  type    = string
-  default = "123root987"
-}
-
 variable "is_create_storage" {
   type    = bool
   default = true
@@ -31,5 +26,5 @@ variable "storage_user" {
 
 variable "storage_password" {
   description = "existing storage password"
-  default = "123root987"
+  default     = "123root987"
 }
