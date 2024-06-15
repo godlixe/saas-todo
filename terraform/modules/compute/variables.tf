@@ -23,12 +23,6 @@ variable "storage_password" {
     description = "database storage password"
 }
 
-variable "is_create_compute" {
-    description = "create new compute instance"
-    type = bool
-    default = true
-}
-
 variable "compute_url" {
     description = "compute instance url"
     default = null
