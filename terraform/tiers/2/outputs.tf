@@ -2,7 +2,7 @@ output "metadata" {
   sensitive = true
   value = {
     compute = {
-      api_url = module.compute.compute_url
+      compute_url = module.compute.compute_url
     }
     storage = {
       host     = module.storage.storage_host
