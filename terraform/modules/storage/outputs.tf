@@ -1,5 +1,5 @@
 output "storage_host" {
-  value = google_sql_database_instance.storage[0].public_ip_address
+  value = google_sql_database_instance.storage.public_ip_address
 }
 
 output "storage_port" {
@@ -7,12 +7,13 @@ output "storage_port" {
 }
 
 output "storage_name" {
-  value = google_sql_database.storage[0].name
+  value = google_sql_database.storage.name
 }
 
 output "storage_user" {
-  value = google_sql_user.new-user[0].name
+  value = google_sql_user.new-user.name
+}
 
 output "storage_password" {
-  value = var.storage_instance_name
+  value = google_sql_user.new-user.password
 }

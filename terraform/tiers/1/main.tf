@@ -2,10 +2,6 @@ provider "google" {
   project = var.project_id
 }
 
-terraform {
-  backend "gcs" {}
-}
-
 module "storage" {
   source = "../../modules/storage"
 
