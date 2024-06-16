@@ -1,4 +1,4 @@
-variable "project_id" {
+variable "provider_id" {
   description = "provider project id"
 }
 

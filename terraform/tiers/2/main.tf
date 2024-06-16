@@ -1,5 +1,5 @@
 provider "google" {
-  project = var.project_id
+  project = var.provider_id
 }
 
 module "storage" {
