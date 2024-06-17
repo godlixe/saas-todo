@@ -1,6 +1,7 @@
 output "metadata" {
   sensitive = true
   value = {
+    serving_url = module.compute.compute_url
     compute = {
       compute_url = module.compute.compute_url
     }
