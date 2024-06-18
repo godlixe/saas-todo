@@ -6,7 +6,7 @@ resource "google_cloud_run_service" "compute" {
   template {
     spec {
       containers {
-        image = "asia-southeast1-docker.pkg.dev/marcell-new/app-images/saas-todo-list-test"
+        image = "asia-southeast2-docker.pkg.dev/myits-saas/saas-product-images/saas-todo-list"
         env {
           name  = "DB_HOST"
           value = var.storage_host
