@@ -1,3 +1,8 @@
+output "resource_information" {
+  value = {
+    serving_url = module.compute.compute_url
+  }
+}
 output "metadata" {
   sensitive = true
   value = {
