@@ -10,5 +10,6 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -o /saas-todo-list
 
 EXPOSE 8080
+ENV PORT 8080
 
 CMD ["/saas-todo-list"]

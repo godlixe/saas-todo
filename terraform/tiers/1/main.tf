@@ -1,32 +1,17 @@
 provider "google" {
-  project = var.project_id
-  region  = var.region
-}
-
-terraform {
-  backend "gcs" {}
+  project = var.provider_id
 }
 
 module "storage" {
   source = "../../modules/storage"
 
   storage_instance_name = var.infrastructure_id
-
-  # Pool configuration
-  is_create_storage = var.is_create_storage
-  storage_host      = var.storage_host
-  storage_port      = var.storage_port
-  storage_name      = var.storage_name
-  storage_user      = var.storage_user
-  storage_password  = var.infrastructure_id
 }
 
 module "compute" {
   source = "../../modules/compute"
 
   # Pool configuration
-  is_create_compute = var.is_create_compute
-  compute_url       = var.compute_url
   compute_name      = var.infrastructure_id
   storage_host      = module.storage.storage_host
   storage_port      = module.storage.storage_port
