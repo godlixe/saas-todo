@@ -1,6 +1,4 @@
 resource "google_sql_database_instance" "storage" {
-  count = var.is_create_storage == true ? 1 : 0
-
   # Information
   name             = "cloud-sql-${var.storage_instance_name}"
   database_version = "POSTGRES_15"
@@ -42,16 +40,15 @@ resource "google_sql_database_instance" "storage" {
 }
 
 resource "google_sql_database" "storage" {
-  count = var.is_create_storage == true ? 1 : 0
-
   name     = "cloud-sql-${var.storage_instance_name}"
-  instance = google_sql_database_instance.storage[0].name
+  instance = google_sql_database_instance.storage.name
 }
 
-resource "google_sql_user" "new-user" {
-  count = var.is_create_storage == true ? 1 : 0
 
+resource "random_uuid" "new" {}
+
+resource "google_sql_user" "new-user" {
   name     = "default-${var.storage_instance_name}"
-  instance = google_sql_database_instance.storage[0].name
-  password = var.storage_password
+  instance = google_sql_database_instance.storage.name
+  password = random_uuid.new.result
 }

@@ -12,16 +12,21 @@ import (
 	"saas-todo-list/pkg/database"
 
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 	"github.com/rs/zerolog"
 )
 
 func main() {
-	err := godotenv.Load(".env")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	// err := godotenv.Load(".env")
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	os.Exit(1)
+	// }
+
+	fmt.Println(os.Getenv("DB_HOST"),
+	os.Getenv("DB_USER"),
+	os.Getenv("DB_PASS"),
+	os.Getenv("DB_PORT"),
+	os.Getenv("DB_NAME"))
 
 	db, err := database.NewPostgresClient(database.DatabaseCredentials{
 		Host:     os.Getenv("DB_HOST"),
