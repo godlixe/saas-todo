@@ -13,7 +13,7 @@ func TodoRoutes(router *gin.Engine, todoController *controllers.TodoController) 
 		todoRoutes.GET("", todoController.GetAll)
 		todoRoutes.GET(":id", todoController.GetById)
 		todoRoutes.POST("", todoController.CreateTodo)
-		todoRoutes.POST(":id", todoController.UpdateTodo)
+		todoRoutes.PUT(":id", todoController.UpdateTodo)
 		todoRoutes.DELETE(":id", todoController.Delete)
 	}
 }

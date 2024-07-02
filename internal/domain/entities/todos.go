@@ -10,7 +10,7 @@ type Todos struct {
 	User   *User     `json:"user,omitempty"`
 
 	Name    string `json:"name"`
-	IsDone  bool   `json:"is_done"`
+	IsDone  *bool  `json:"is_done"`
 	Content string `json:"content"`
 
 	TimeStamp

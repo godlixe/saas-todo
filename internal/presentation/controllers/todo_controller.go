@@ -178,7 +178,7 @@ func (c *TodoController) UpdateTodo(ctx *gin.Context) {
 		&entities.Todos{
 			ID:     uuid.MustParse(id),
 			Name:   todo.Name,
-			IsDone: todo.IsDone,
+			IsDone: &todo.IsDone,
 			TenantData: entities.TenantData{
 				TenantID: uuid.MustParse(strTenantId),
 			},

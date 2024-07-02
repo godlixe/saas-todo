@@ -65,7 +65,7 @@ func (r *TodoRepository) UpdateTodo(
 	ctx context.Context,
 	todo *entities.Todos,
 ) error {
-	tx := r.db.Model(entities.Todos{}).Updates(&todo)
+	tx := r.db.Model(entities.Todos{}).Where("id = ?", todo.ID).Updates(&todo)
 
 	return tx.Error
 }
