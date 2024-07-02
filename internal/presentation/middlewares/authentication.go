@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"fmt"
 	"net/http"
 	"saas-todo-list/pkg/auth"
 	"saas-todo-list/pkg/httpx"
@@ -33,6 +34,7 @@ func Authenticate() gin.HandlerFunc {
 		jwtToken, err := jwt.ParseWithClaims(tokenHeader[1], &claims, func(token *jwt.Token) (interface{}, error) {
 			return auth.JWTKey, nil
 		})
+		fmt.Println(auth.JWTKey)
 		if err != nil {
 			ctx.AbortWithStatusJSON(http.StatusUnauthorized, httpx.Response{
 				Message: "error parsing token",
@@ -47,8 +49,16 @@ func Authenticate() gin.HandlerFunc {
 			return
 		}
 
-		ctx.Set("user_id", claims.UserId)
-		ctx.Set("tenant_id", claims.TenantId)
+		tenantID := ctx.GetHeader("x-tenant-id")
+		if tenantID == "" {
+			ctx.AbortWithStatusJSON(http.StatusUnauthorized, httpx.Response{
+				Message: "invalid tenant_id",
+			})
+			return
+		}
+
+		ctx.Set("user_id", claims.Subject)
+		ctx.Set("tenant_id", tenantID)
 		ctx.Next()
 	}
 }

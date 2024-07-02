@@ -21,6 +21,23 @@ func NewTodoRepository(
 	}
 }
 
+func (r *TodoRepository) GetAll(
+	ctx context.Context,
+	filter entities.TodoFilter,
+) ([]entities.Todos, error) {
+	var todos []entities.Todos
+
+	tx := r.db.Model(&entities.Todos{})
+
+	if filter.UserID != "" {
+		tx.Where("user_id = ?", filter.UserID)
+	}
+
+	tx = tx.Where("tenant_id = ?", filter.TenantID).Find(&todos)
+
+	return todos, tx.Error
+}
+
 func (r *TodoRepository) FindById(
 	ctx context.Context,
 	id uuid.UUID,

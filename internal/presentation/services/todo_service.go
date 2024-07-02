@@ -8,6 +8,11 @@ import (
 )
 
 type TodoService interface {
+	GetAll(
+		ctx context.Context,
+		filter entities.TodoFilter,
+	) ([]entities.Todos, error)
+
 	FindById(
 		ctx context.Context,
 		id uuid.UUID,

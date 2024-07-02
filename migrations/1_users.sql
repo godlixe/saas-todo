@@ -5,5 +5,4 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL,
     created_at timestamp NOT NULL,
     updated_at timestamp NOT NULL,
-    tenant_id VARCHAR(36) NOT NULL
 )

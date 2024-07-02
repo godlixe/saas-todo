@@ -10,6 +10,7 @@ import (
 func TodoRoutes(router *gin.Engine, todoController *controllers.TodoController) {
 	todoRoutes := router.Group("/todo", middlewares.Authenticate())
 	{
+		todoRoutes.GET("", todoController.GetAll)
 		todoRoutes.GET(":id", todoController.GetById)
 		todoRoutes.POST("", todoController.CreateTodo)
 		todoRoutes.POST(":id", todoController.UpdateTodo)

@@ -20,6 +20,13 @@ func NewTodoService(
 	}
 }
 
+func (s *TodoService) GetAll(
+	ctx context.Context,
+	filter entities.TodoFilter,
+) ([]entities.Todos, error) {
+	return s.todoRepository.GetAll(ctx, filter)
+}
+
 func (s *TodoService) FindById(
 	ctx context.Context,
 	id uuid.UUID,

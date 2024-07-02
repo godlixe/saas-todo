@@ -24,6 +24,42 @@ func NewTodoController(
 	}
 }
 
+func (c *TodoController) GetAll(ctx *gin.Context) {
+	getPersonal := ctx.Query("personal")
+
+	tenantId, ok := ctx.Get("tenant_id")
+	if !ok {
+		err := httpx.NewError("tenant unidentifiable", errors.New("tenant unidentifiable"), http.StatusUnauthorized)
+		ctx.Error(err)
+		return
+	}
+
+	strTenantId := tenantId.(string)
+
+	filter := entities.TodoFilter{
+		TenantID: strTenantId,
+	}
+
+	if getPersonal == "1" {
+		filter.UserID = ctx.GetString("user_id")
+	}
+
+	res, err := c.todoService.GetAll(
+		ctx,
+		filter,
+	)
+	if err != nil {
+		err := httpx.NewError("todos not found", err, http.StatusUnauthorized)
+		ctx.Error(err)
+		return
+	}
+
+	ctx.JSON(http.StatusOK, httpx.Response{
+		Message: "get todos successfull",
+		Data:    res,
+	})
+}
+
 func (c *TodoController) GetById(ctx *gin.Context) {
 	id := ctx.Param("id")
 
@@ -92,11 +128,13 @@ func (c *TodoController) CreateTodo(ctx *gin.Context) {
 	res, err := c.todoService.CreateTodo(
 		ctx,
 		&entities.Todos{
+			ID:     uuid.New(),
 			Name:   todo.Name,
 			UserID: uuid.MustParse(strUserId),
 			TenantData: entities.TenantData{
 				TenantID: uuid.MustParse(strTenantId),
 			},
+			Content: todo.Content,
 		},
 	)
 	if err != nil {
@@ -144,6 +182,7 @@ func (c *TodoController) UpdateTodo(ctx *gin.Context) {
 			TenantData: entities.TenantData{
 				TenantID: uuid.MustParse(strTenantId),
 			},
+			Content: todo.Content,
 		},
 	)
 	if err != nil {
