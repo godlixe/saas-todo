@@ -23,10 +23,10 @@ func main() {
 	// }
 
 	fmt.Println(os.Getenv("DB_HOST"),
-	os.Getenv("DB_USER"),
-	os.Getenv("DB_PASS"),
-	os.Getenv("DB_PORT"),
-	os.Getenv("DB_NAME"))
+		os.Getenv("DB_USER"),
+		os.Getenv("DB_PASS"),
+		os.Getenv("DB_PORT"),
+		os.Getenv("DB_NAME"))
 
 	db, err := database.NewPostgresClient(database.DatabaseCredentials{
 		Host:     os.Getenv("DB_HOST"),
@@ -52,6 +52,7 @@ func main() {
 	todoController := controllers.NewTodoController(todoService)
 
 	server := gin.Default()
+	server.Use(middlewares.CORSMiddleware())
 	server.Use(middlewares.ErrorHandler(logger))
 
 	routes.AuthRoutes(server, authController)
