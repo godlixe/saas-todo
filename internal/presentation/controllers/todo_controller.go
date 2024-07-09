@@ -125,11 +125,13 @@ func (c *TodoController) CreateTodo(ctx *gin.Context) {
 		return
 	}
 
+	var defaultIsDone bool = false
 	res, err := c.todoService.CreateTodo(
 		ctx,
 		&entities.Todos{
 			ID:     uuid.New(),
 			Name:   todo.Name,
+			IsDone: &defaultIsDone,
 			UserID: uuid.MustParse(strUserId),
 			TenantData: entities.TenantData{
 				TenantID: uuid.MustParse(strTenantId),
