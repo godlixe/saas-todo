@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	_ "github.com/lib/pq"
+	pq "github.com/lib/pq"
 )
 
 type Storage struct {
@@ -46,6 +46,9 @@ func main() {
 		fmt.Println("empty metadata")
 		return
 	}
+
+	pq.Array("")
+
 	fmt.Println(metadataFlg)
 
 	var infraMetadata InfrastructureMetadata
