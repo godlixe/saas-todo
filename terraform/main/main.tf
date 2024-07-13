@@ -1,7 +1,7 @@
 provider "google" {
   # credentials = file(var.service_account_file_path)
-  project     = var.project_id
-  region      = var.region
+  project = var.project_id
+  region  = var.region
 }
 
 module "storage" {
@@ -12,7 +12,8 @@ module "storage" {
 }
 
 module "compute" {
-  source = "../modules/compute"
+  source     = "../modules/compute"
+  depends_on = [module.storage]
 
   compute_name     = var.tenant_name
   storage_host     = module.storage.host
