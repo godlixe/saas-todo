@@ -81,12 +81,11 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-
 	res, err := db.Exec(string(f))
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	fmt.Println(res)
+	fmt.Println(res, "initiation success")
 }
